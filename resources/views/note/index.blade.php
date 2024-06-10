@@ -1,11 +1,14 @@
 <x-app-layout>
-    <div class="note-container py-12">
+    <div class="py-12 note-container">
         <a href="{{ route('note.create') }}" class="new-note-btn">
             New Note
         </a>
         <div class="notes">
             @foreach ($notes as $note)
                 <div class="note">
+                    <div class="note-header">
+                        <h3 class="px-2 py-4 text-2xl">Note: {{ $note->title }}</h3>
+                    </div>
                     <div class="note-body">
                         {{ Str::words($note->note, 30) }}
                     </div>
