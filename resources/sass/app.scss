@@ -1,9 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 * {
     box-sizing: border-box;
@@ -28,13 +25,13 @@
     text-align: center;
     text-decoration: none;
     color: #1e1e1e;
-}
-.new-note-btn:hover {
-    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
-}
-.new-note-btn:active {
-    position: relative;
-    top: 1px;
+    &:hover {
+        box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+    }
+    &:active {
+        position: relative;
+        top: 1px;
+    }
 }
 .notes {
     display: flex;
@@ -67,10 +64,11 @@
     font-family: "Caveat", cursive;
     font-size: 24px;
     padding: 10px 16px 16px;
+    &:hover {
+        box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+    }
 }
-.notes .note:hover {
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
-}
+
 .single-note .note {
     margin: 0;
     width: 100%;
@@ -82,9 +80,9 @@
     border: none;
     resize: none;
     padding: 20px;
-}
-.single-note .note .note-body::placeholder {
-    color: #111111;
+    &::placeholder {
+        color: #111111;
+    }
 }
 .note .note-buttons {
     opacity: 0;
@@ -111,9 +109,9 @@
     color: inherit;
     display: inline-block;
     font-size: 16px;
-}
-.note-buttons .note-cancel-button:hover {
-    background-color: #ffffff;
+    &:hover {
+        background-color: #ffffff;
+    }
 }
 
 .note-buttons .note-submit-button {
@@ -127,9 +125,9 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-}
-.note-buttons .note-submit-button:hover {
-    background-color: #704300;
+    &:hover {
+        background-color: #704300;
+    }
 }
 
 .note-header {
@@ -149,9 +147,9 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-}
-.note-buttons .note-edit-button:hover {
-    background-color: #0059b3;
+    &:hover {
+        background-color: #0059b3;
+    }
 }
 
 .note-buttons .note-delete-button {
@@ -165,9 +163,9 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-}
-.note-buttons .note-delete-button:hover {
-    background-color: #a82f2f;
+    &:hover {
+        background-color: #a82f2f;
+    }
 }
 .note-date {
     margin-top: 20px;
