@@ -3,6 +3,7 @@
         <h1>Create new note</h1>
         <form action="{{ route('note.store') }}" method="POST" class="note">
             @csrf
+            <input type="text" name="name" class="note-name" placeholder="Enter note name">
             <textarea name="note" rows="10" class="note-body" placeholder="Enter your note here"></textarea>
             <div class="note-buttons">
                 <a href="{{ route('note.index') }}" class="note-cancel-button">Cancel</a>
