@@ -9,5 +9,10 @@ class Note extends Model
 {
     use HasFactory;
     //? Values that can be mass assigned
-    protected $fillable = ['note', 'user_id'];
+    protected $fillable = ['name', 'note', 'user_id'];
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }
