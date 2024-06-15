@@ -68,7 +68,7 @@ class NoteController extends Controller
             'note' => ['required', 'string', 'max:255']
         ]);
 
-        $data['user_id'] = $request->user()->id;
+        $data['user_id'] = auth()->user()->id;
         $note = Note::create($data);
 
         if ($request->tags) {
