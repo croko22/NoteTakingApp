@@ -39,8 +39,9 @@
     flex-wrap: wrap;
     margin: 0 auto;
 }
+//* NOTE
 .note {
-    background-color: #f0c806;
+    background-color: #ddd;
     border-radius: 8px;
     width: 280px;
     margin: 0 10px 20px;
@@ -49,6 +50,32 @@
     cursor: pointer;
     text-decoration: none;
     color: #1e1e1e;
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h3 {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px 16px;
+            border: none;
+            background: none;
+        }
+    }
+    &__body {
+        outline: 0;
+        font-family: "Caveat", cursive;
+        font-size: 24px;
+        padding: 10px 16px 16px;
+    }
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        &__buttons {
+            opacity: 0;
+        }
+    }
 }
 
 .note .note-name {
@@ -64,9 +91,6 @@
     font-family: "Caveat", cursive;
     font-size: 24px;
     padding: 10px 16px 16px;
-    &:hover {
-        box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
-    }
 }
 
 .single-note .note {
@@ -193,6 +217,34 @@
         border-radius: 30px;
         width: 100%;
         font-size: 16px;
+        outline: 0;
+    }
+    &__button {
+        padding: 10px;
+        border: 1px solid #e0e0e0;
+        border-radius: 30px;
+        background-color: #f0c806;
+        color: #1e1e1e;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+            background-color: #f0c806;
+            box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+
+.filter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    &__select {
+        padding: 10px;
+        border: 1px solid #e0e0e0;
+        border-radius: 30px;
+        font-size: 16px;
+        width: 100%;
         outline: 0;
     }
     &__button {
