@@ -8,7 +8,7 @@
 
             <div class="note-tags">
                 <h2 class="py-4 text-2xl">Tags</h2>
-                <select name="tags[]">
+                <select name="tags[]" multiple multiple class="select-tags">
                     @foreach ($tags as $tag)
                         <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                     @endforeach
