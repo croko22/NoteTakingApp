@@ -1,16 +1,20 @@
 <x-app-layout>
     <div class="py-12 note-container">
-        <form>
-            <div class="search">
-                <input type="search" class="search__input" placeholder="Search notes..." name="search"
-                    value="{{ request('search') }}">
-                <button class="search__button" type="submit">Search</button>
-            </div>
+        <form class="search">
+            <input type="search" class="search__input" placeholder="Search notes..." name="search"
+                value="{{ request('search') }}">
+            <button class="search__button" type="submit">Search</button>
         </form>
-        @foreach ($tags as $tag)
-            <a class="tag" href="{{ route('note.index', ['tag' => $tag->name]) }}"
-                class="tag">{{ $tag->name }}</a>
-        @endforeach
+
+        <form method="GET" action="{{ route('note.index') }}" class="filter">
+            <select name="tag" class="filter__select">
+                @foreach ($tags as $tag)
+                    <option value="{{ $tag->id }}" {{ request('tag') == $tag->id ? 'selected' : '' }}>
+                        {{ $tag->name }}</option>
+                @endforeach
+            </select>
+            <button type="submit" class="filter__button">Filter</button>
+        </form>
 
 
         <a href="{{ route('note.create') }}" class="new-note-btn">
@@ -25,25 +29,27 @@
 
         <div class="notes">
             @forelse ($notes as $note)
-                <div class="note" href="{{ route('note.show', $note) }}">
-                    <div class="note-header">
-                        <h3 class="px-2 py-4 text-2xl">{{ $note->name }}</h3>
+                <div class="note">
+                    <div class="note__header">
+                        <h3>{{ $note->name }}</h3>
+
                     </div>
-                    <div class="note-body">
+                    <p class="note__body">
                         {{ Str::words($note->note, 30) }}
+                    </p>
+                    <div class="note__footer">
+                        @foreach ($note->tags as $tag)
+                            <span class="tag">{{ $tag->name }}</span>
+                        @endforeach
                     </div>
                     <div class="note-buttons">
-                        <a href="{{ route('note.show', $note) }}" class="note-edit-button">View</a>
-                        <a href="{{ route('note.edit', $note) }}" class="note-edit-button">Edit</a>
+                        <a href="{{ route('note.edit', $note) }}" class="note-edit-button">Open</a>
                         <form action="{{ route('note.destroy', $note) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button class="note-delete-button">Delete</button>
                         </form>
                     </div>
-                    @foreach ($note->tags as $tag)
-                        <span class="tag">{{ $tag->name }}</span>
-                    @endforeach
                 </div>
             @empty
                 <p>No notes found</p>
