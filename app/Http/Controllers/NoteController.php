@@ -13,7 +13,8 @@ class NoteController extends Controller
      */
     public function index(Request $request)
     {
-        $tags = Tag::where("user_id", auth()->user()->id)->get();
+        $tags = auth()->user()->tags;
+
         $search = $request->input('search');
         $tag = $request->input('tag');
 
@@ -38,23 +39,12 @@ class NoteController extends Controller
         return view('note.index', ['notes' => $notes, 'tags' => $tags]);
     }
 
-    // public function search(Request $request)
-    // {
-    //     $searchTerm = $request->get('search');
-
-    //     $notes = Note::where('name', 'like', "%{$searchTerm}%")
-    //         ->orWhere('note', 'like', "%{$searchTerm}%")
-    //         ->get();
-
-    //     return view('note.index', compact('notes', 'searchTerm'));
-    // }
-
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $tags = Tag::where("user_id", auth()->user()->id)->get();
+        $tags = auth()->user()->tags;
         return view('note.create', ['tags' => $tags]);
     }
 
@@ -97,7 +87,7 @@ class NoteController extends Controller
         if ($note->user_id !== request()->user()->id) {
             abort(403);
         }
-        $tags = Tag::where('user_id', auth()->user()->id)->get();
+        $tags = auth()->user()->tags;
         return view('note.edit', ['note' => $note, 'tags' => $tags]);
     }
 
