@@ -26,7 +26,7 @@
                 @foreach ($note->tags as $tag)
                     <span class="tag">{{ $tag->name }}</span>
                 @endforeach
-                <select name="tags[]">
+                <select name="tags[]" multiple>
                     @foreach ($tags as $tag)
                         <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                     @endforeach
